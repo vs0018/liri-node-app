@@ -11,6 +11,14 @@ console.log(name);
 
 axios.get("http://www.omdbapi.com/?t=" + name + "&apikey=trilogy").then(
   function(response) {
-    console.log(response);
-  }
+    var movieInfo = response.data;
+
+    console.log("Title: " + movieInfo.Title);
+    console.log("Year: " + movieInfo.Year);
+    console.log("IMDb Rating: " + movieInfo.imdbRating);
+    console.log("Country: " + movieInfo.Country);
+    console.log("Language: " + movieInfo.Language);
+    console.log("Plot: " + movieInfo.Plot);
+    console.log("Actors: " + movieInfo.Actors);
+    }
 );
