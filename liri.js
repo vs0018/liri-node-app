@@ -31,6 +31,11 @@ switch (command) {
     }
 
 function movieGet() {
+
+    if (!name) {
+        name = "mr+nobody"
+    };
+
     axios.get("http://www.omdbapi.com/?t=" + name + "&apikey=trilogy").then(
     function(response) {
         var movieInfo = response.data;
@@ -42,8 +47,8 @@ function movieGet() {
         console.log("Language: " + movieInfo.Language);
         console.log("Plot: " + movieInfo.Plot);
         console.log("Actors: " + movieInfo.Actors);
-        }
-    );
+        console.log("\n------------------------\n");
+    });
 };
 
 function spotifyGet() {
@@ -92,8 +97,8 @@ function concertGet() {
 
         console.log("Date: " + dateFixed);
 
-        console.log ("\n-------------------\n")
-            };
-        });
-    };
+        console.log("\n------------------------\n");
+        };
+    });
+};
 
