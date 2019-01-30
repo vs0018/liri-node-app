@@ -26,7 +26,7 @@ switch (command) {
       break;
     
     case "do-what-it-says":
-      doGet();
+      doIt();
       break;
     }
 
@@ -102,3 +102,19 @@ function concertGet() {
     });
 };
 
+function doIt() {
+    fs.readFile("random.txt", "utf8", function(error, data) {
+
+        if (error) {
+            return console.log(error);
+        } else {
+            var newString = data.split(",");
+
+            var command = newString[0];
+            var term = newString[1].slice(1, -1).split(" ").join("+");
+
+            //Would need to somehow get these strings to call the appropriate function
+            //and to use this local search term variable
+        };
+    });
+}
