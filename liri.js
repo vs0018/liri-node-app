@@ -2,6 +2,8 @@ require("dotenv").config();
 
 var keys = require("./keys.js");
 var axios = require("axios");
+var moment = require('moment');
+moment().format();
 var Spotify = require('node-spotify-api');
 
 var spotify = new Spotify(keys.spotify);
@@ -74,10 +76,12 @@ function concertGet() {
         console.log("Location: " + concertInfo[x].venue.city + ", " + concertInfo[x].venue.region);
 
         var date = concertInfo[x].datetime;
-        
-        var dateFixed = moment(date).format("MMM Do YY");
+
+        var dateFixed = moment(date, "YYYY-MM-DDTHH:mm:ss").format("MM/DD/YY");
 
         console.log("Date: " + dateFixed);
+
+        console.log ("\n-------------------\n")
             };
         });
     };
