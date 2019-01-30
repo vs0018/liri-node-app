@@ -13,11 +13,11 @@ console.log(name);
 
 switch (command) {
     case "concert-this":
-      total();
+      concertGet();
       break;
     
     case "spotify-this-song":
-      deposit();
+      spotifyGet();
       break;
     
     case "movie-this":
@@ -25,7 +25,7 @@ switch (command) {
       break;
     
     case "do-what-it-says":
-      lotto();
+      doGet();
       break;
     }
 
@@ -44,3 +44,40 @@ function movieGet() {
         }
     );
 };
+
+function spotifyGet() {
+    axios.get("http://www.omdbapi.com/?t=" + name + "&apikey=trilogy").then(
+    function(response) {
+        // var movieInfo = response.data;
+
+        // console.log("Title: " + movieInfo.Title);
+        // console.log("Year: " + movieInfo.Year);
+        // console.log("IMDb Rating: " + movieInfo.imdbRating);
+        // console.log("Country: " + movieInfo.Country);
+        // console.log("Language: " + movieInfo.Language);
+        // console.log("Plot: " + movieInfo.Plot);
+        // console.log("Actors: " + movieInfo.Actors);
+        }
+    );
+};
+
+function concertGet() {
+    axios.get("https://rest.bandsintown.com/artists/" + name + "/events?app_id=codingbootcamp").then(
+    function(response) {
+        var concertInfo = response.data;
+
+        var x;
+
+        for (x in concertInfo) {
+
+        console.log("Venue: " + concertInfo[x].venue.name);
+        console.log("Location: " + concertInfo[x].venue.city + ", " + concertInfo[x].venue.region);
+
+        var date = concertInfo[x].datetime;
+        
+        var dateFixed = moment(date).format("MMM Do YY");
+
+        console.log("Date: " + dateFixed);
+            };
+        });
+    };
